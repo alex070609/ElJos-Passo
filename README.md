@@ -21,10 +21,12 @@ This bot add a join greeting, and has a youtube player integrated.
 ### Installing
 
 * Simply put this forder where you can find it.
+* @index.js:53 replace `accueil` with the exact name of your "welcome" channel
+* @index.js:105 replace `799651373045121096` with the id of the channel where the bot listen to commands
 * @index.js:231 replace `process.env.TOKEN` with your discord bot token
 * Open an CMD line tool inside the folder of the bot
 * Type `node .`
-* And thats it
+* And thats it you can write `el!help` to get the list of available commands
 
 ## Help
 

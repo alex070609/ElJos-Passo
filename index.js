@@ -27,6 +27,9 @@ Client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+const roleClaim = require('./role-claim.js');
+const roleRglt = require('./role-rglt.js');
+
 for(const file of commandFiles){
     const command = require(`./commands/${file}`);
 
@@ -46,12 +49,18 @@ const applyText = (canvas, text) => {
 };
 
 Client.once('ready', () => {
-    console.log('The bot is online !')
+    console.log('The bot is online !');
+
+    roleClaim(Client)
+    roleRglt(Client)
 });
 
 Client.on('guildMemberAdd', async member => {
     const channel = member.guild.channels.cache.find(ch => ch.name === 'accueil');
     if (!channel) return;
+
+    const role= member.guild.roles.cache.find(role => role.name === "Demandeurs d'emplois");
+    member.roles.add(role);
     
     /*const joinEmbed = new Discord.MessageEmbed()
     .setColor('#FF0000')
